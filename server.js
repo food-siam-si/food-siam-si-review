@@ -4,10 +4,12 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 
+let env = require('./config/env')
+
 /*const swaggerJsDoc=require('swagger-jsdoc')
 const swaggerUI=require('swagger-ui-express')*/
 
-mongoose.connect(process.env.DATABASE_URL, {
+mongoose.connect(env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -38,6 +40,7 @@ app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));*/
 app.use(express.json());
 
 const reviewsRouter = require("./routes/reviews");
+const { MONGO_URI } = require("./config/env");
 app.use("/reviews", reviewsRouter);
 
 app.listen(process.env.PORT, () => console.log("Server Started"));
