@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 
 const reviewSchema = new mongoose.Schema({
   userId: {
-    type: String,
+    type: Number,
     required: true,
   },
   restaurantId: {
-    type: String,
+    type: Number,
     required: true,
   },
   description: {
