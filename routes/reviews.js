@@ -13,12 +13,10 @@ router.get("/:restaurantId", async (req, res) => {
     });
 
     res.json(reviews.map((review) => ({
-        id: review["_id"],
-        userId: review.userId,
-        restaurantId: review.restaurantId,
-        description: review.description,
-        rate: review.rate,
-        writtenDate: review.writtenDate,
+      id: review["_id"],
+      description: review.description,
+      rate: review.rate,
+      writtenDate: review.writtenDate,
     })));
   } catch (err) {
     res.status(500).json({ message: err.message });
