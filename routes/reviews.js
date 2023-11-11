@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
   const existedReview = await Review.findOne({ userId: req.body.userId, restaurantId: req.body.restaurantId })
 
   if (existedReview) {
-    res.status(400).json({ message: "Review already exists" });
+    res.status(409).json({ message: "Review already exists" });
     return
   }
 
